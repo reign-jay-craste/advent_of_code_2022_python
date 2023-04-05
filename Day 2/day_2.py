@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
+import os
 
 # https://adventofcode.com/2022/day/2
 # Day 2 : Rock Paper Scissors
 
-# Scenario 1: Given a strategy for Rock Paper Scissors with various
-#
+# Scenario 1: Given a strategy for Rock Paper Scissors, input assumed to be what symbols to play
+# Scenario 2: Strategy was actually suggestion when to win, lose or draw the game
 
 # Input
 # Each line is equivalent to round and what an elf might play. A,B,C for enemies and X,Y,Z are suggested strategy 
 # A, X - Rock
 # B, Y - Paper
 # C, Z - Scissors
+
+input_path = 'day_2.txt'
 
 ROUND_WON = 6
 ROUND_LOST = 0
@@ -63,16 +66,18 @@ additional_game_data = {
     }
 }
 
-
 if __name__ == "__main__":
-    # input file should be day_2.txt
-    with open('day_2.txt',"r") as input_file:
+    # start this if running script alone
+    if not os.path.exists(input_path):
+        print("Error reading input!")
+        exit()
+
+    with open(input_path,"r") as input_file:
         
-        round = 0
         total_assumed_score = 0
         total_score = 0
 
-        for line in input_file:
+        for round, line in enumerate(input_file):
             round+=1
             enemy_play = ""
             suggested_play = ""

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 
 # https://adventofcode.com/2022/day/1
 # Day 1 : Calorie counting
@@ -9,10 +10,15 @@
 # Input
 # Each line consists of calories for all the foods brought by each elves. Empty lines separates each elves.
 
+input_path = 'day_1.txt'
+
 if __name__ == "__main__":
     # start this if running script alone
-    # input file should be day_1.txt
-    with open('day_1.txt',"r") as input_file:
+    if not os.path.exists(input_path):
+        print("Error reading input!")
+        exit()
+        
+    with open(input_path,"r") as input_file:
         elf = []
         total_calories = 0
         for line in input_file:
