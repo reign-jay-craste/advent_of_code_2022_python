@@ -10,9 +10,9 @@ import os
 # Input
 # Each line consists of calories for all the foods brought by each elves. Empty lines separates each elves.
 
-input_path = 'day_1.txt'
+input_default = os.path.join(os.path.dirname(os.path.abspath(__file__)),'day_1.txt')
 
-if __name__ == "__main__":
+def day1(input_path=input_default):
     # start this if running script alone
     if not os.path.exists(input_path):
         print("Error reading input!")
@@ -40,14 +40,16 @@ if __name__ == "__main__":
             # One must also consider what if, there were multiple elves having the same total?
             max_calories = max(elf)
 
-            print("The maximum calories the an elf has is: ",max_calories)
+            print("---- Day 1 : Calorie counting ----")
 
             # Scenario 1
+            print("The maximum calories the an elf has is: ",max_calories)
+
             index = [i+1 for i in range(len(elf)) if elf[i] == max_calories]
             if len(index)>1:
                 print("The elves that has the highest number of calories are elves:", index)
             else:
-                print("The elf that has the highest number of calories is", index)
+                print("The elf that has the highest number of calories is:", index)
 
             # Scenario 2
             n = 3
@@ -55,3 +57,8 @@ if __name__ == "__main__":
             top_n_total = sum(sorted_calories[:3])
             
             print("The total for the top", n, "calories an elf carry is",top_n_total)
+
+            print("----------------------------------\n")
+
+if __name__ == "__main__":
+    day1()

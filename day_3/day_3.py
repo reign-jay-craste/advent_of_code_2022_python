@@ -29,9 +29,9 @@ def getPriority(item):
 
     return value
 
-input_path = 'day_3.txt'
+input_default = os.path.join(os.path.dirname(os.path.abspath(__file__)),'day_3.txt')
 
-if __name__ == "__main__":
+def day3(input_path = input_default):
     if not os.path.exists(input_path):
         print("Error reading input!")
         exit()
@@ -63,6 +63,9 @@ if __name__ == "__main__":
                     sum_badge_priorities += getPriority(chr)
                 elf_group = []
 
+        print("---- Day 3 : Rucksack Reorganization ----")
         print("The sum of the priorities for the wrong items found were:" ,sum_wrong_item_priorities)
         print("The sum of the priorities for the group badges are:" ,sum_badge_priorities)
-
+        print("-----------------------------------------\n")
+if __name__ == "__main__":
+    day3()

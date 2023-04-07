@@ -10,9 +10,10 @@ import os
 # Input
 # Assignment areas for the pair
 
-input_path = 'day_4.txt'
+input_default = os.path.join(os.path.dirname(os.path.abspath(__file__)),'day_4.txt')
 
-if __name__ == "__main__":
+def day4(input_path=input_default):
+
     if not os.path.exists(input_path):
         print("Error reading input!")
         exit()
@@ -52,7 +53,10 @@ if __name__ == "__main__":
                 # Section 2 additional requirements
                 overlap_pair_cnt+=1
 
-        #print("The sum of the priorities for the wrong items found were:" ,)
+        print("---- Day 4 : Camp Cleanup ----")
         print("Insufficient number of pairs found:" ,full_assignment_cnt)
-        print("Insufficient number of pairs found:" ,overlap_pair_cnt)
+        print("Insufficient number of pairs found including overlaps:" ,overlap_pair_cnt)
+        print("------------------------------\n")
 
+if __name__ == "__main__":
+    day4()

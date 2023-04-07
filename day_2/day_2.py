@@ -13,7 +13,7 @@ import os
 # B, Y - Paper
 # C, Z - Scissors
 
-input_path = 'day_2.txt'
+input_default = os.path.join(os.path.dirname(os.path.abspath(__file__)),'day_2.txt')
 
 ROUND_WON = 6
 ROUND_LOST = 0
@@ -66,7 +66,7 @@ additional_game_data = {
     }
 }
 
-if __name__ == "__main__":
+def day2(input_path = input_default):
     # start this if running script alone
     if not os.path.exists(input_path):
         print("Error reading input!")
@@ -134,5 +134,10 @@ if __name__ == "__main__":
                 continue               
             total_score += score_to_add
 
+        print("---- Day 2 : Rock Paper Scissors ----")
         print("Scenario 1 assumption has a total score of:", total_assumed_score)    
         print("Scenario 2 using correct rules has a total score of:", total_score)  
+        print("-------------------------------------\n")
+        
+if __name__ == "__main__":
+    day2()
